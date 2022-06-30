@@ -52,9 +52,12 @@ public class MyController {
 //        }
 //    }
 //
-//    @PostMapping("make/error/{errorId}")
-//    public void makeError(@PathVariable String errorId){
-//        bugsnag.setAppVersion("0.2");
-//        bugsnag.notify(new RuntimeException(errorId));
-//    }
+    @PostMapping("make/error/{errorId}")
+    public void makeError(@PathVariable String errorId){
+        try {
+            throw new Exception(errorId);
+        } catch (Exception e) {
+            Sentry.captureException(e);
+        }
+    }
 }
