@@ -1,0 +1,10 @@
+- uses: actions/checkout@v2
+- name: Create Sentry release
+  uses: getsentry/action-release@v1
+  env:
+    SENTRY_AUTH_TOKEN: 8e0ac62c0f7b4beaa38389da9a97b5ab64cc6e2796774ca1bde319abfbd3d1a2
+    SENTRY_ORG: AB
+    SENTRY_PROJECT: spring-boot
+    # SENTRY_URL: https://sentry.io/
+  with:
+    environment: production
