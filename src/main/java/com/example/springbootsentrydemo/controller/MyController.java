@@ -26,6 +26,7 @@ public class MyController {
 
     @PostMapping("make/error/{errorId}")
     public void makeError(@PathVariable String errorId){
+        bugsnag.setAppVersion("0.2");
         bugsnag.notify(new RuntimeException(errorId));
     }
 }
