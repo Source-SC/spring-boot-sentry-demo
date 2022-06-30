@@ -24,6 +24,18 @@ public class MyController {
         return "error1";
     }
 
+    @GetMapping("error2")
+    public String error2(){
+        bugsnag.setAppVersion("0.2");
+        bugsnag.notify(new RuntimeException("Custom ERROR 2"));
+        try {
+            throw new Exception("This is a test.");
+        } catch (Exception e) {
+            Sentry.captureException(e);
+        }
+        return "error1";
+    }
+
     @PostMapping("make/error/{errorId}")
     public void makeError(@PathVariable String errorId){
         bugsnag.setAppVersion("0.2");
