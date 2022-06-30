@@ -36,6 +36,19 @@ public class MyController {
         return "error1";
     }
 
+    @PostMapping("error3/{version}/{title}")
+    public void error3(
+            @PathVariable String version,
+            @PathVariable String title){
+        bugsnag.setAppVersion(version);
+        bugsnag.notify(new RuntimeException(title));
+        try {
+            throw new Exception("This is a test.");
+        } catch (Exception e) {
+            Sentry.captureException(e);
+        }
+    }
+
     @PostMapping("make/error/{errorId}")
     public void makeError(@PathVariable String errorId){
         bugsnag.setAppVersion("0.2");
