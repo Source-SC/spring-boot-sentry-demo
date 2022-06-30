@@ -69,4 +69,13 @@ public class MyController {
             Sentry.captureException(e);
         }
     }
+
+    @PostMapping("make/error3/{errorId}")
+    public void makeError3(@PathVariable String errorId){
+        try {
+            throw new Exception(errorId);
+        } catch (Exception e) {
+            Sentry.captureException(e);
+        }
+    }
 }
