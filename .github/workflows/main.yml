@@ -8,3 +8,4 @@
     # SENTRY_URL: https://sentry.io/
   with:
     environment: production
+    version: 0.6
