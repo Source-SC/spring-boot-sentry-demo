@@ -51,11 +51,24 @@
             <version>6.1.0</version>
         </dependency>
 
-        <!--        <dependency>-->
-        <!--            <groupId>com.bugsnag</groupId>-->
-        <!--            <version>[3.0,4.0)</version>-->
-        <!--            <artifactId>bugsnag-spring</artifactId>-->
-        <!--        </dependency>-->
+<!--    raygun setting        -->
+        <dependency>
+            <groupId>com.mindscapehq</groupId>
+            <artifactId>raygun4java</artifactId>
+            <type>pom</type>
+            <version>3.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.mindscapehq</groupId>
+            <artifactId>core</artifactId>
+            <version>3.0.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.bugsnag</groupId>
+            <version>[3.0,4.0)</version>
+            <artifactId>bugsnag-spring</artifactId>
+        </dependency>
     </dependencies>
 
     <build>

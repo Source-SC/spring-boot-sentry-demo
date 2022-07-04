@@ -2,6 +2,7 @@ package com.example.springbootsentrydemo.controller;
 
 //import com.bugsnag.Bugsnag;
 
+import com.bugsnag.Bugsnag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,8 +13,8 @@ import io.sentry.Sentry;
 @RestController
 public class MyController {
 
-//    @Autowired
-//    private Bugsnag bugsnag;
+    @Autowired
+    private Bugsnag bugsnag;
 
     @GetMapping("error1")
     public String error1() {
@@ -27,17 +28,17 @@ public class MyController {
         return "error1";
     }
 //
-//    @GetMapping("error2")
-//    public String error2(){
-//        bugsnag.setAppVersion("0.2");
-//        bugsnag.notify(new RuntimeException("Custom ERROR 2"));
-//        try {
-//            throw new Exception("This is a test.");
-//        } catch (Exception e) {
-//            Sentry.captureException(e);
-//        }
-//        return "error1";
-//    }
+    @GetMapping("bugsnag")
+    public String error2(){
+        bugsnag.setAppVersion("0.3");
+        bugsnag.notify(new RuntimeException("Custom ERROR 2"));
+        try {
+            throw new Exception("This is a test.");
+        } catch (Exception e) {
+            Sentry.captureException(e);
+        }
+        return "error1";
+    }
 //
 //    @PostMapping("error3/{version}/{title}")
 //    public void error3(
@@ -86,5 +87,10 @@ public class MyController {
 //        } catch (Exception e) {
 //            Sentry.captureException(e);
 //        }
+    }
+
+    @PostMapping("raygun/error1/{errorId}")
+    public void raygunError1(@PathVariable String errorId){
+
     }
 }
